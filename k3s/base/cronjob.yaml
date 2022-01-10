@@ -25,6 +25,11 @@ spec:
                   secretKeyRef:
                     name: minergate
                     key: MINERGATE_USER
+              - name: MINERGATE_PASS
+                valueFrom:
+                  secretKeyRef:
+                    name: minergate
+                    key: MINERGATE_PASS
             envFrom:
               - configMapRef:
                   name: config

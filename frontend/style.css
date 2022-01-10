@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 320px) {
+  body {
+    font-size: 5px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  body {
+    font-size: 7px;
+  }
+}
+
+body {
+  background-color: #021a24;
+  color: rgb(56, 52, 52);
+  font-family: "Tahoma", sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.1em;
+}
+.green {
+  color: rgb(44, 206, 11);
+}
+
+.red {
+  color: rgb(241, 66, 12);
+}

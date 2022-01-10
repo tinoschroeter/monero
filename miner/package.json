@@ -1,0 +1,16 @@
+{
+  "name": "miner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "logs2postgres.js",
+  "scripts": {
+    "start": "node logs2postgres.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "pg": "^8.5.1",
+    "tail": "^2.2.0"
+  }
+}

@@ -1,0 +1,7 @@
+namespace: monero
+resources:
+  - monero-miner.yaml
+  - monero-backend.yaml
+  - monero-frontend.yaml
+  - service.yml
+  - cronjob.yaml

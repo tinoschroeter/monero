@@ -1,0 +1,26 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  artifacts:
+  - image: registry.tino.sh/monero-miner
+    context: ../../
+    docker:
+      target: monero-miner
+  - image: registry.tino.sh/monero-miner-shipper
+    context: ../../
+    docker:
+      target: monero-miner-shipper
+  - image: registry.tino.sh/monero-scraper
+    context: ../../
+    docker:
+      target: monero-scraper
+  - image: registry.tino.sh/monero-miner-backend
+    context: ../../
+    docker:
+      target: monero-backend
+  - image: registry.tino.sh/monero-frontend
+    context: ../../
+    docker:
+      target: monero-frontend
+deploy:
+  kustomize: {}

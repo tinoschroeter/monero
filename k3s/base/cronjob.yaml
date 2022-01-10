@@ -1,0 +1,41 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: monero-scraper
+spec:
+  schedule: "*/60 * * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          activeDeadlineSeconds: 120
+          containers:
+          - name: monero-scraper
+            image: registry.tino.sh/monero-scraper
+            env:
+              - name: DB_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: pgpass
+                    key: DB_PASSWORD
+              - name: MINERGATE_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: minergate
+                    key: MINERGATE_USER
+            envFrom:
+              - configMapRef:
+                  name: config
+            resources:
+              requests:
+                memory: "500Mi"
+                cpu: "300m"
+              limits:
+                memory: "640Mi"
+                cpu: "1000m"
+            imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
+          nodeSelector:
+            arch: arm64

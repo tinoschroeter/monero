@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: miner-frontend
+  name: miner-frontend
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: miner-monero-frontend
+  template:
+    metadata:
+      labels:
+        app: miner-monero-frontend
+    spec:
+      containers:
+      - name: miner-monero-frontend
+        image: registry.tino.sh/monero-frontend
+        env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pgpass
+                key: DB_PASSWORD
+        envFrom:
+          - configMapRef:
+              name: config
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "30m"
+          limits:
+            memory: "64Mi"
+            cpu: "100m"
+      nodeSelector:
+        arch: arm64

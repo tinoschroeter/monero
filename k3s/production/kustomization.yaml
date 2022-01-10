@@ -1,0 +1,5 @@
+---
+bases:
+  - config.yaml
+  - ../base
+  - ingress.yaml

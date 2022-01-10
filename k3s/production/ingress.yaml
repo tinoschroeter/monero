@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  name: moneros-ingress
+  namespace: monero
+spec:
+  rules:
+  - host: monero.tino.sh
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: miner-frontend-service
+            port: 
+              number: 80
+  tls:
+  - hosts:
+    - monero.tino.sh
+    secretName: monero-tino-sh-tls

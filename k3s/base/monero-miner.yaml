@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: miner-monero
+  name: miner-monero
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: miner-monero
+  template:
+    metadata:
+      labels:
+        app: miner-monero
+    spec:
+      volumes:
+      - name: logfile
+      containers:
+      - name: miner-monero
+        image: registry.tino.sh/monero-miner
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "30m"
+          limits:
+            memory: "64Mi"
+            cpu: "200m"
+        volumeMounts:
+        - name: logfile
+          mountPath: /var/log
+      - name: miner-monero-shipper
+        image: registry.tino.sh/monero-miner-shipper
+        env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pgpass
+                key: DB_PASSWORD
+        envFrom:
+          - configMapRef:
+              name: config
+        volumeMounts:
+        - name: logfile
+          mountPath: /var/log
+      nodeSelector:
+        arch: arm64

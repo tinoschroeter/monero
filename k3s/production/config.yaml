@@ -4,4 +4,8 @@ metadata:
   name: config
   namespace: monero
 data:
+  DB_USER: "kgfcxlxt"
+  DB_HOST: "tai.db.elephantsql.com"
+  DB_DATABASE: "kgfcxlxt"
+  DB_PORT: "5432"
   PORT: "3000"

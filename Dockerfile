@@ -32,7 +32,7 @@ RUN chmod +x /bin/miner.sh
 
 CMD ["/bin/miner.sh"]
 
-# monero-miner-shippe
+# monero-miner-shipper
 FROM node:16 AS monero-miner-shipper
 
 WORKDIR /opt

@@ -7,3 +7,5 @@
 [![k3s](https://img.shields.io/badge/run%20on%20-Raspberry%20Pi-red)](https://github.com/tinoschroeter/k8s.homelab)
 
 Crypto Mining on Kubernetes running on Rasperry Pi.
+
+

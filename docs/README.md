@@ -8,4 +8,3 @@
 
 Crypto Mining on Kubernetes running on Rasperry Pi.
 
-

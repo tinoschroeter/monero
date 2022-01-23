@@ -4,4 +4,4 @@ resources:
   - monero-backend.yaml
   - monero-frontend.yaml
   - service.yml
-  - cronjob.yaml
+# - cronjob.yaml
